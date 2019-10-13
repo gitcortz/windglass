@@ -10,7 +10,7 @@ use App\Http\Resources\EmployeeResource;
 use App\Http\Resources\EmployeeCollection;
 use App\Http\Requests\EmployeeStoreRequest;
 use App\Http\Resources\TimesheetCollection;
-
+use App\Library\Services\Payroll\PayrollServiceInterface;
 
 class EmployeeController extends Controller
 {
@@ -23,6 +23,11 @@ class EmployeeController extends Controller
     public function show(Employee $employee)
     {
         return ((new EmployeeResource($employee)));
+    }
+
+    public function payroll(Request $request, PayrollServiceInterface $payrollServiceInstance)
+    {
+        echo $payrollServiceInstance->generatePayroll();
     }
 
     public function timesheet(Request $request)
