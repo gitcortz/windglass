@@ -4,9 +4,9 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CustomerResource extends JsonResource
+class CustomerListResource extends JsonResource
 {
-    /**
+     /**
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -22,8 +22,6 @@ class CustomerResource extends JsonResource
             'city' => $this->ciy,
             'phone' => $this->phone,
             'mobile' => $this->mobile,
-            'notes' => $this->notes,
-            'orders' => $this->orders,
           ];
     }
 }
