@@ -13,7 +13,7 @@ class TimesheetStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class TimesheetStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'time_in' => 'required|date',
+            'time_out' => 'required|date',           
         ];
     }
 }
