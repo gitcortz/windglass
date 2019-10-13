@@ -25,7 +25,8 @@ class TimesheetStoreRequest extends FormRequest
     {
         return [
             'time_in' => 'required|date',
-            'time_out' => 'required|date',           
+            'time_out' => 'required|date',
+            'employee_id' => 'required',        
         ];
     }
 }
