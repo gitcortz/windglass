@@ -76,3 +76,9 @@ Route::get('ordersItems/{ordersItem}', 'OrderItemController@show');
 Route::post('ordersItems', 'OrderItemController@store');
 Route::put('ordersItems/{ordersItem}', 'OrderItemController@update');
 Route::delete('ordersItems/{ordersItem}', 'OrderItemController@delete');
+
+Route::get('timesheets', 'TimesheetController@index');
+Route::get('timesheets/{timesheet}', 'TimesheetController@show');
+Route::post('timesheets', 'TimesheetController@store');
+Route::put('timesheets/{timesheet}', 'TimesheetController@update');
+Route::delete('timesheets/{timesheet}', 'TimesheetController@delete');
