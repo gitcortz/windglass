@@ -17,7 +17,7 @@ class TimesheetResource extends JsonResource
         return [
             'time_in' => $this->time_in,
             'time_out' => $this->time_out,
-            'employee' => $this->employee,     
+            'employee' => new EmployeeResource($this->employee),     
           ];
     }
 }

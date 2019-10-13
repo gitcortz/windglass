@@ -61,6 +61,7 @@ Route::delete('products/{product}', 'ProductController@delete');
 
 Route::get('employees', 'EmployeeController@index');
 Route::get('employees/{employee}', 'EmployeeController@show');
+Route::get('employees/{employee_id}/timesheet/{from}/{to}', 'EmployeeController@timesheet');
 Route::post('employees', 'EmployeeController@store');
 Route::put('employees/{employee}', 'EmployeeController@update');
 Route::delete('employees/{employee}', 'EmployeeController@delete');
