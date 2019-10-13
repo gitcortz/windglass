@@ -23,12 +23,14 @@ class TimesheetController extends Controller
     {
         return ((new TimesheetResource($timesheet)));
     }
+
     public function store(TimesheetStoreRequest $request)
     {
         $validated = $request->validated();
-        $employee = Timesheet::create($request->all());
+        $timesheet = Timesheet::create($request->all());
         return response()->json($timesheet, 201);
     }
+
     public function update(TimesheetStoreRequest $request, Timesheet $timesheet)
     {
         $validated = $request->validated();
