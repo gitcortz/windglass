@@ -84,3 +84,5 @@ Route::get('timesheets/{timesheet}', 'TimesheetController@show');
 Route::post('timesheets', 'TimesheetController@store');
 Route::put('timesheets/{timesheet}', 'TimesheetController@update');
 Route::delete('timesheets/{timesheet}', 'TimesheetController@delete');
+
+Route::get('payroll/timesheets/{from}/{to}', 'PayrollController@getTimesheetInformation');
