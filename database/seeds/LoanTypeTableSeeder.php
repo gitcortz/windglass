@@ -12,19 +12,19 @@ class LoanTypeTableSeeder extends Seeder
     public function run()
     {
             \App\LoanType::create([
-                'name' => 'SSS Loan', 
+                'name' => 'sss', 
                 'month_term' => 12, 
                 'fixed_amount' => 0,                
             ]);
 
             \App\LoanType::create([
-                'name' => 'Salary Loan', 
+                'name' => 'salary', 
                 'month_term' => 0, 
                 'fixed_amount' => 500,                
             ]);
 
             \App\LoanType::create([
-                'name' => 'Vale', 
+                'name' => 'vale', 
                 'month_term' => 0, 
                 'fixed_amount' => 0,                
             ]);

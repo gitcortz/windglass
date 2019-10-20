@@ -10,7 +10,7 @@ class EmployeeTimesheetOtherFeesDto implements \JsonSerializable
     private $salaryLoan = 0;
     private $sss = 0;
 
-    public function __construct(float $vale, float $salaryLoan, float $sss)
+    public function __construct(float $sss, float $salaryLoan, float $vale)
     {
         $this->vale = $vale;
         $this->salaryLoan = $salaryLoan;

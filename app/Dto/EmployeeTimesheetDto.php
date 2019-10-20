@@ -11,13 +11,12 @@ class EmployeeTimesheetDto implements \JsonSerializable
     private $timesheet;
     private $fees;
 
-    public function __construct( Employee $employee, Collection $timesheetCollection)
+    public function __construct( Employee $employee, Collection $timesheetCollection, EmployeeTimesheetOtherFeesDto $loans)
     {
         $this->name = $employee->first_name.' '.$employee->last_name;
         $this->employeeRate = $employee->salary;
         $this->timesheet = $timesheetCollection;
-        $otherfees = new  EmployeeTimesheetOtherFeesDto(1, 1, 1);
-        $this->fees = $otherfees;
+        $this->fees =$loans;
     }
 
     public function getName()
