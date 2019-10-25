@@ -17,11 +17,11 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 Route::group(['middleware' => 'auth:api'], function() {
-    /*Route::get('customers', 'CustomerController@index');
+    Route::get('customers', 'CustomerController@index');
     Route::get('customers/{customer}', 'CustomerController@show');
     Route::post('customers', 'CustomerController@store');
     Route::put('customers/{customer}', 'CustomerController@update');
-    Route::delete('customers/{customer}', 'CustomerController@delete');*/
+    Route::delete('customers/{customer}', 'CustomerController@delete');
 });
 
 
@@ -29,12 +29,13 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout');
 
+/*
 Route::get('customers', 'CustomerController@index');
     Route::get('customers/{customer}', 'CustomerController@show');
     Route::post('customers', 'CustomerController@store');
     Route::put('customers/{customer}', 'CustomerController@update');
     Route::delete('customers/{customer}', 'CustomerController@delete');
-
+*/
 Route::get('users', 'UserController@index');
 Route::get('users/{user}', 'UserController@show');
 Route::post('users', 'UserController@store');
@@ -66,6 +67,7 @@ Route::get('employees/{employee_id}/timesheet/{from}/{to}', 'EmployeeController@
 Route::post('employees', 'EmployeeController@store');
 Route::put('employees/{employee}', 'EmployeeController@update');
 Route::delete('employees/{employee}', 'EmployeeController@delete');
+Route::post('employees/{employee_id}/loan', 'EmployeeController@add_loan');
 
 Route::get('orders', 'OrderController@index');
 Route::get('orders/{order}', 'OrderController@show');
@@ -86,3 +88,8 @@ Route::put('timesheets/{timesheet}', 'TimesheetController@update');
 Route::delete('timesheets/{timesheet}', 'TimesheetController@delete');
 
 Route::get('payroll/timesheets/{from}/{to}', 'PayrollController@getTimesheetInformation');
+
+Route::get('pos', 'POSController@index');
+Route::get('pos/{pos}', 'POSController@show');
+Route::post('pos/open', 'POSController@open');
+Route::put('pos/{posSession}', 'POSController@close');

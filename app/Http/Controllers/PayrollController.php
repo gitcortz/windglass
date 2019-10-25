@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Timesheet;
 use App\Employee;
 use App\EmployeeLoan;
-use App\Dto\EmployeeTimeSheetDto;
+use App\Dto\EmployeeTimesheetDto;
 use App\Dto\EmployeeTimesheetOtherFeesDto;
 use App\Http\Traits\Paginatable;
 use Illuminate\Support\Facades\DB;
@@ -44,13 +44,13 @@ class PayrollController extends Controller
         $loans = EmployeeLoan::where('employee_id', '=', $employee->id)->get();
         foreach ($loans as $loan) {
             if ($loan->loanType->name == 'sss') {
-                $sss = round($loan->loan_amount/$loan->loanType->month_term/4, 2);
+                $sss = round($loan->loan_balance, 2);
             }
             if ($loan->loanType->name == 'salary') {
-                $salary = $loan->loanType->fixed_amount;
+                $salary = $loan->loan_balance;
             }
             if ($loan->loanType->name == 'vale') {
-                $vale = $loan->loan_amount;
+                $vale = $loan->loan_balance;
             }
         }
 

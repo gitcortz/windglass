@@ -17,18 +17,18 @@ class CustomerController extends Controller
     {
         //return CustomerResource::collection(Customer::paginate($this->getPerPage()));
         // /return BookResource::collection(Book::with('ratings')->paginate(25));
-        \DB::listen(function($query) {
+        /*\DB::listen(function($query) {
             var_dump($query->sql);
-        });
+        });*/
         return new CustomerCollection(Customer::paginate($this->getPerPage()));
         
     }
  
     public function show(Customer $customer)
     {
-        \DB::listen(function($query) {
+        /*\DB::listen(function($query) {
             var_dump($query->sql);
-        });
+        });*/
         
         return ((new CustomerResource($customer))->additional([
             'meta' => [

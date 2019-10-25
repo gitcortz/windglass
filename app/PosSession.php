@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PosSession extends Model
 {
-    protected $fillable = ['store_id', 'start_balance', 'end_balance', 'pos_status', 'closed_at'];
+    protected $fillable = ['name', 'store_id', 'start_balance', 'end_balance', 'pos_status', 'closed_at'];
 
     public function user(){
         return $this->belongsTo('App\User');
