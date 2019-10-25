@@ -52,4 +52,5 @@ class OrderController extends Controller
 
         return response()->json(null, 204);
     }
+
 }

@@ -68,4 +68,10 @@ class POSController extends Controller
         $order = Order::find($order_id);
         return (new OrderResource($order));
     }
+
+    public function delivered(Request $request, PosServiceInterface $posServiceInstance)
+    {
+        $order_id = $posServiceInstance->delivered($request);
+        return (new OrderResource($order));
+    }
 }

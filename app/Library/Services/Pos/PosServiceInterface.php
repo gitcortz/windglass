@@ -7,4 +7,5 @@ use Illuminate\Http\Request;
 Interface PosServiceInterface
 {
     public function createOrder(Request $request);
+ 
 }

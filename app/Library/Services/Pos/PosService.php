@@ -20,7 +20,7 @@ class PosService implements PosServiceInterface
             'city' => $request->city,
             'customer_id' => $request->customer_id,
             'pos_session_id'=>$request->posSession,
-            'store_id'=>$request->store_id,
+            'order_status_id'=>1,
           ]);
           
           $order_id = $order->id;
@@ -42,7 +42,6 @@ class PosService implements PosServiceInterface
         
         return $order_id;
     }
-
 
     
 }
