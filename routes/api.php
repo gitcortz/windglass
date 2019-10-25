@@ -90,6 +90,7 @@ Route::delete('timesheets/{timesheet}', 'TimesheetController@delete');
 Route::get('payroll/timesheets/{from}/{to}', 'PayrollController@getTimesheetInformation');
 
 Route::get('pos', 'POSController@index');
-Route::get('pos/{pos}', 'POSController@show');
+Route::get('pos/{posSession}}', 'POSController@show');
 Route::post('pos/open', 'POSController@open');
 Route::put('pos/{posSession}', 'POSController@close');
+Route::post('pos/{posSession}/order', 'POSController@create_order');

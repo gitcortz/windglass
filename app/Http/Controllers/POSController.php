@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PosSession;
+use App\Order;
 use App\Http\Traits\Paginatable;
 use Validator;
 use Carbon\Carbon;
+use App\Library\Services\Pos\PosServiceInterface;
+use App\Http\Resources\OrderResource;
 
 class POSController extends Controller
 {
@@ -59,9 +62,10 @@ class POSController extends Controller
         return $store;
     }
 
-    public function create_order(Request $request)
+    public function create_order(Request $request, PosServiceInterface $posServiceInstance)
     {
-        
+        $order_id = $posServiceInstance->createOrder($request);
+        $order = Order::find($order_id);
+        return (new OrderResource($order));
     }
-
 }

@@ -4,5 +4,5 @@ namespace App\Library\Services\Payroll;
   
 Interface PayrollServiceInterface
 {
-    public function generatePayroll();
+    public function generatePayroll(Date $date);
 }
