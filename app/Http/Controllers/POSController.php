@@ -72,6 +72,12 @@ class POSController extends Controller
         return (new OrderResource($order));
     }
 
+    public function void_order(Request $request, PosServiceInterface $posServiceInstance)
+    {
+        $result = $posServiceInstance->voidOrder($request);
+        return $result;
+    }
+
     public function delivered(Request $request, PosServiceInterface $posServiceInstance)
     {
         $order_id = $posServiceInstance->delivered($request);

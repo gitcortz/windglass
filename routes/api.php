@@ -53,6 +53,10 @@ Route::get('stores/{store}', 'StoreController@show');
 Route::post('stores', 'StoreController@store');
 Route::put('stores/{store}', 'StoreController@update');
 Route::delete('stores/{store}', 'StoreController@delete');
+Route::get('stores/{store}/products', 'StoreController@products');
+Route::get('stores/{store}/products/{stock}', 'StoreController@product');
+Route::post('stores/{store}/products', 'StoreController@add_product');
+Route::post('stores/{store}/products/move', 'StoreController@move_product');
 
 Route::get('products', 'ProductController@index');
 Route::get('products/{product}', 'ProductController@show');
@@ -98,3 +102,4 @@ Route::post('pos/{posSession}/cash-in', 'POSController@cash_in');
 Route::post('pos/{posSession}/cash-out', 'POSController@cash_out');
 Route::post('pos/{posSession}/summary', 'POSController@summary');
 Route::post('pos/{posSession}/sales', 'POSController@sales');
+Route::post('pos/{posSession}/void', 'POSController@void_order');
