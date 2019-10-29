@@ -94,3 +94,5 @@ Route::get('pos/{posSession}}', 'POSController@show');
 Route::post('pos/open', 'POSController@open');
 Route::put('pos/{posSession}', 'POSController@close');
 Route::post('pos/{posSession}/order', 'POSController@create_order');
+Route::post('pos/{posSession}/cash-in', 'POSController@cash_in');
+Route::post('pos/{posSession}/cash-out', 'POSController@cash_out');

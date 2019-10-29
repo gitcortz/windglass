@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Order;
 use App\OrderItems;
+use App\Cash;
 
 class PosService implements PosServiceInterface
 {
@@ -21,6 +22,8 @@ class PosService implements PosServiceInterface
             'customer_id' => $request->customer_id,
             'pos_session_id'=>$request->posSession,
             'order_status_id'=>1,
+            'payment_method_id'=>$request->payment_method_id,
+            'payment_status_id'=>1,
           ]);
           
           $order_id = $order->id;
@@ -43,5 +46,29 @@ class PosService implements PosServiceInterface
         return $order_id;
     }
 
-    
+    public function cashIn(Request $request)
+    {              
+          $cash = Cash::create([
+            'status' => 1, 
+            'cash_amount' => $request->cash_amount, 
+            'description' => $request->description, 
+            'pos_session_id' => $request->pos_session_id
+          ]);
+        
+        
+        return $cash;
+    }
+
+    public function cashOut(Request $request)
+    {              
+          $cash = Cash::create([
+            'status' => 2, 
+            'cash_amount' => $request->cash_amount, 
+            'description' => $request->description, 
+            'pos_session_id' => $request->pos_session_id
+          ]);
+        
+        
+        return $cash;
+    }
 }

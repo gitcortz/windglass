@@ -10,6 +10,7 @@ use Validator;
 use Carbon\Carbon;
 use App\Library\Services\Pos\PosServiceInterface;
 use App\Http\Resources\OrderResource;
+use App\Http\Resources\CashResource;
 
 class POSController extends Controller
 {
@@ -52,14 +53,16 @@ class POSController extends Controller
         }
     }
 
-    public function cash_in(PosSession $store)
+    public function cash_in(Request $request, PosServiceInterface $posServiceInstance)
     {
-        return $store;
+        $cash = $posServiceInstance->cashIn($request);
+        return (new CashResource($cash));
     }
 
-    public function cash_out(PosSession $store)
+    public function cash_out(Request $request, PosServiceInterface $posServiceInstance)
     {
-        return $store;
+        $cash = $posServiceInstance->cashIn($request);
+        return (new CashResource($cash));
     }
 
     public function create_order(Request $request, PosServiceInterface $posServiceInstance)

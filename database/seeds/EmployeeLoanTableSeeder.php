@@ -13,6 +13,7 @@ class EmployeeLoanTableSeeder extends Seeder
     {
         \App\EmployeeLoan::create([
             'loan_amount' => 10000, 
+            'loan_balance' => 10000, 
             'status' => 0, 
             'employee_id' => 1, 
             'loan_type_id' => 1             
@@ -20,6 +21,7 @@ class EmployeeLoanTableSeeder extends Seeder
 
         \App\EmployeeLoan::create([
             'loan_amount' => 100, 
+            'loan_balance' => 100, 
             'status' => 0, 
             'employee_id' => 1, 
             'loan_type_id' => 3            
@@ -27,6 +29,7 @@ class EmployeeLoanTableSeeder extends Seeder
 
         \App\EmployeeLoan::create([
             'loan_amount' => 2000, 
+            'loan_balance' => 2000, 
             'status' => 0, 
             'employee_id' => 2, 
             'loan_type_id' => 2            
@@ -34,6 +37,7 @@ class EmployeeLoanTableSeeder extends Seeder
 
         \App\EmployeeLoan::create([
             'loan_amount' => 300, 
+            'loan_balance' => 300, 
             'status' => 0, 
             'employee_id' => 3, 
             'loan_type_id' => 3            

@@ -11,11 +11,11 @@ class PaymentStatusTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\PaymentMethod::create([
+        \App\PaymentStatus::create([
             'name' => 'unpaid', 
         ]);
 
-        \App\PaymentMethod::create([
+        \App\PaymentStatus::create([
             'name' => 'paid', 
         ]);
     }
