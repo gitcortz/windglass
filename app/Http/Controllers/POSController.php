@@ -61,7 +61,7 @@ class POSController extends Controller
 
     public function cash_out(Request $request, PosServiceInterface $posServiceInstance)
     {
-        $cash = $posServiceInstance->cashIn($request);
+        $cash = $posServiceInstance->cashOut($request);
         return (new CashResource($cash));
     }
 
@@ -76,5 +76,17 @@ class POSController extends Controller
     {
         $order_id = $posServiceInstance->delivered($request);
         return (new OrderResource($order));
+    }
+
+    public function summary(Request $request, PosServiceInterface $posServiceInstance)
+    {
+        $summary = $posServiceInstance->summary($request->posSession);
+        return $summary;
+    }
+
+    public function sales(Request $request, PosServiceInterface $posServiceInstance)
+    {
+        $summary = $posServiceInstance->sales($request->posSession);
+        return $summary;
     }
 }

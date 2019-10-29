@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\DB;
 use App\Order;
 use App\OrderItems;
 use App\Cash;
+use App\PosSession;
+use App\Dto\PosSummaryDto;
+use App\Dto\PosSalesDto;
 
 class PosService implements PosServiceInterface
 {
@@ -70,5 +73,44 @@ class PosService implements PosServiceInterface
         
         
         return $cash;
+    }
+
+    public function summary($pos_session_id)
+    {       
+        $posSession = PosSession::find($pos_session_id);
+
+        $order_items = DB::table('orders')
+                ->join('order_items', 'order_items.order_id', '=', 'orders.id')
+                ->join('products', 'order_items.product_id', '=', 'products.id')
+                ->select('order_items.*', 'products.name as product_name', 
+                        'orders.payment_status_id')
+                ->where('orders.pos_session_id', $pos_session_id)
+                ->get();
+
+        $cashes = DB::table('cashes')
+              ->select('cashes.*')
+              ->where('cashes.pos_session_id', $pos_session_id)
+              ->get();
+
+        $pos_summary = new PosSummaryDto($posSession, $order_items, $cashes);
+        
+        return $pos_summary;
+    }
+
+    public function sales($pos_session_id)
+    {       
+        //$posSession = PosSession::find($pos_session_id);
+
+        $order_items = DB::table('orders')
+                ->join('order_items', 'order_items.order_id', '=', 'orders.id')
+                ->join('products', 'order_items.product_id', '=', 'products.id')
+                ->select('order_items.*', 'products.name as product_name', 
+                        'orders.payment_status_id')
+                ->where('orders.pos_session_id', $pos_session_id)
+                ->get();
+
+        $pos_sales = new PosSalesDto($order_items);
+        
+        return $pos_sales;
     }
 }
