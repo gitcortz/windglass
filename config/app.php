@@ -230,6 +230,6 @@ return [
 
     ],
 
-    'upload_employee_index' => 0,
-    'upload_date_index' => 2,
+    'upload_employee_index' => env('UPLOAD_EMPLOYEE_INDEX'),
+    'upload_date_index' => env('UPLOAD_DATE_INDEX'),
 ];
