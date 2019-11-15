@@ -17,17 +17,19 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 Route::group(['middleware' => 'auth:api'], function() {
-    Route::get('customers', 'CustomerController@index');
-    Route::get('customers/{customer}', 'CustomerController@show');
-    Route::post('customers', 'CustomerController@store');
-    Route::put('customers/{customer}', 'CustomerController@update');
-    Route::delete('customers/{customer}', 'CustomerController@delete');
+   
 });
 
 
 Route::post('register', 'Auth\RegisterController@register');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout');
+
+Route::get('customers', 'CustomerController@index');
+Route::get('customers/{customer}', 'CustomerController@show');
+Route::post('customers', 'CustomerController@store');
+Route::put('customers/{customer}', 'CustomerController@update');
+Route::delete('customers/{customer}', 'CustomerController@delete');
 
 /*
 Route::get('customers', 'CustomerController@index');
@@ -94,12 +96,15 @@ Route::delete('timesheets/{timesheet}', 'TimesheetController@delete');
 Route::get('payroll/timesheets/{from}/{to}', 'PayrollController@getTimesheetInformation');
 
 Route::get('pos', 'POSController@index');
-Route::get('pos/{posSession}}', 'POSController@show');
+Route::get('pos/{posSession}', 'POSController@show');
 Route::post('pos/open', 'POSController@open');
-Route::put('pos/{posSession}', 'POSController@close');
+Route::post('pos/{posSession}/close', 'POSController@close');
 Route::post('pos/{posSession}/order', 'POSController@create_order');
 Route::post('pos/{posSession}/cash-in', 'POSController@cash_in');
 Route::post('pos/{posSession}/cash-out', 'POSController@cash_out');
-Route::post('pos/{posSession}/summary', 'POSController@summary');
-Route::post('pos/{posSession}/sales', 'POSController@sales');
+Route::get('pos/{posSession}/summary', 'POSController@summary');
+Route::get('pos/{posSession}/sales', 'POSController@sales');
 Route::post('pos/{posSession}/void', 'POSController@void_order');
+
+Route::post('timesheets/uploadfile', 'TimesheetController@upload');
+Route::post('timesheets/uploadprocess', 'TimesheetController@uploadprocess');

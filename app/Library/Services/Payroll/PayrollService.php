@@ -5,6 +5,7 @@ use Carbon\Carbon;
 use App\Timesheet;
 use App\Payroll;
 use App\PayrollTimesheet;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 class PayrollService implements PayrollServiceInterface
@@ -95,6 +96,39 @@ class PayrollService implements PayrollServiceInterface
     }
 
 
+    public function processCsvData($data) {
+        $employee_index = config('app.upload_employee_index');
+        $date_index = config('app.upload_date_index');
+      
+        $array = [];
+        foreach ($data as $row) {
+            if (is_numeric($row[$employee_index])) {
+                $date_string = str_replace('/', '-', $row[$date_index]);
+                $date_format = date("Ymd",strtotime($date_string));
+                $index_name = $date_format."_".$row[$employee_index];
+                if (Arr::exists($array, $index_name)) {
+                    $array[$index_name]->time_out = date("Y-m-d H:i:s",strtotime($date_string));
+                    
+                }
+                else {
+                    $timesheet = new Timesheet();
+                    $timesheet->employee_id = $row[$employee_index];
+                    $timesheet->time_in =date("Y-m-d H:i:s",strtotime($date_string));
+                    $timesheet->created_at = date('Y-m-d H:i:s');
+                    $timesheet->updated_at = date('Y-m-d H:i:s');
+                    $array[$index_name] = $timesheet;                    
+                }
+            }            
+        }
+        
+        $array_timesshet = [];
+        foreach ($array as $key => $value) {
+           $array_timesshet[] = $value->attributesToArray();
+        }
+
+        Timesheet::insert($array_timesshet);
+      
+    }
 
 
 

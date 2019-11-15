@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Timesheet extends Model
 {
-    protected $fillable = ['time_in', 'time_out', 'employee_id'];
+    protected $fillable = ['time_in', 'time_out', 'employee_id','created_at', 'updated_at'];
 
     public function employee(){
         return $this->belongsTo('App\Employee');
