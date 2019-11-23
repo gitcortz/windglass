@@ -24,6 +24,7 @@ class CreateEmployeesTable extends Migration
             $table->text('notes')->nullable();
             $table->decimal('salary', 9, 2);            
             $table->dateTime('hire_date');
+            $table->biginteger('biometrics_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
