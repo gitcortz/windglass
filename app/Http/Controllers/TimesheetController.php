@@ -70,8 +70,6 @@ class TimesheetController extends Controller
             'data' => json_encode($data)
         ]);
 
-        //$json = '[["Ac-2No","Name","sTime","Verify Mode","Machine","Exception"],["4","44444","15\/11\/2019 8:20 PM","FP\/PW\/RF\/FACE","4",""],["4","44444","15\/11\/2019 8:20 PM","FP\/PW\/RF\/FACE","4",""],["5","5555","15\/11\/2019 8:20 PM","FP\/PW\/RF\/FACE","4",""],["5","5555","15\/11\/2019 8:20 PM","FP\/PW\/RF\/FACE","4",""]]';
-        //$data = json_decode($json, true);
         $payrollServiceInstance->processCsvData($data);
         return response()->json("OK", 200);
     }

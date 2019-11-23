@@ -4,6 +4,7 @@ namespace App\Library\Services\Payroll;
 use Carbon\Carbon;
 use App\Timesheet;
 use App\Payroll;
+use App\Employee;
 use App\PayrollTimesheet;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -112,11 +113,14 @@ class PayrollService implements PayrollServiceInterface
                 }
                 else {
                     $timesheet = new Timesheet();
-                    $timesheet->employee_id = $row[$employee_index];
-                    $timesheet->time_in =date("Y-m-d H:i:s",strtotime($date_string));
-                    $timesheet->created_at = date('Y-m-d H:i:s');
-                    $timesheet->updated_at = date('Y-m-d H:i:s');
-                    $array[$index_name] = $timesheet;                    
+                    $employees = Employee::where('biometrics_id', $row[$employee_index])->get();
+                    if ($employees->count() > 0) {
+                      $timesheet->employee_id = $employees->first()->id;
+                      $timesheet->time_in =date("Y-m-d H:i:s",strtotime($date_string));
+                      $timesheet->created_at = date('Y-m-d H:i:s');
+                      $timesheet->updated_at = date('Y-m-d H:i:s');
+                      $array[$index_name] = $timesheet;                      
+                   }
                 }
             }            
         }
