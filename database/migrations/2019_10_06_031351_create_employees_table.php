@@ -21,6 +21,7 @@ class CreateEmployeesTable extends Migration
             $table->string('city');
             $table->string('phone')->nullable();
             $table->string('mobile')->nullable();
+            $table->string('position')->nullable();
             $table->text('notes')->nullable();
             $table->decimal('salary', 9, 2);            
             $table->dateTime('hire_date');

@@ -22,6 +22,10 @@ class EmployeeResource extends JsonResource
             'city' => $this->ciy,
             'phone' => $this->phone,
             'mobile' => $this->mobile,     
+            'hire_date' => $this->mobile,     
+            //'notes' => $this->notes,     
+            'salary' => $this->salary,  
+            'position'=> $this->position,     
           ];
     }
 }

@@ -9,7 +9,7 @@ class Employee extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['first_name', 'last_name', 'address', 'city', 'phone', 'mobile', 'notes', 'salary', 'hire_date','biometrics_id'];
+    protected $fillable = ['first_name', 'last_name', 'address', 'city', 'phone', 'mobile','position', 'notes', 'salary', 'hire_date','biometrics_id'];
 
     public function orders(){
         return $this->hasMany('App\Order');

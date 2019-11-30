@@ -74,6 +74,7 @@ Route::post('employees', 'EmployeeController@store');
 Route::put('employees/{employee}', 'EmployeeController@update');
 Route::delete('employees/{employee}', 'EmployeeController@delete');
 Route::post('employees/{employee_id}/loan', 'EmployeeController@add_loan');
+Route::put('employeeinfos', 'EmployeeController@update_employeeInfo');
 
 Route::get('orders', 'OrderController@index');
 Route::get('orders/{order}', 'OrderController@show');
